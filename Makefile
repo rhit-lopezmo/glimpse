@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := build
 
-.PHONY: fmt vet build run clean tidy
+.PHONY: fmt vet build run clean tidy path
 
 fmt:
 	go fmt ./...
@@ -19,3 +19,7 @@ clean:
 
 tidy: 
 	go mod tidy
+
+path:
+	sudo cp glimpse /usr/local/bin/
+
