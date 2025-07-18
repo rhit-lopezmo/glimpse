@@ -1,6 +1,6 @@
 # glimpse
 
-A CLI tool to quickly catch a "glimpse" of your images, textures, etc...
+A tool to quickly catch a "glimpse" of your images, textures, etc...
 
 # Build
 Just run `make` in the directory you clone the repo.
@@ -11,6 +11,9 @@ This will:
 - run go build to generate the binary
 
 **NOTE:** Go must be installed on your system for this build process to work.
+
+# Tech Stack
+I built this tool using Go w/ Raylib Go Bindings
 
 ## Checklist
 
