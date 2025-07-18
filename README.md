@@ -2,6 +2,16 @@
 
 A CLI tool to quickly catch a "glimpse" of your images, textures, etc...
 
+# Build
+Just run `make` in the directory you clone the repo.
+
+This will:
+- run go mod init 
+- run go mod tidy to install dependencies
+- run go build to generate the binary
+
+**NOTE:** Go must be installed on your system for this build process to work.
+
 ## Checklist
 
 - [x] Load single file asset and display it
