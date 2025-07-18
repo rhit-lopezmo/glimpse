@@ -1,4 +1,4 @@
-# Glimpse
+# glimpse
 
 A CLI tool to quickly catch a "glimpse" of your images, textures, etc...
 
