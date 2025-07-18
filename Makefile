@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := build
 
-.PHONY: fmt vet build clean tidy path
+.PHONY: fmt vet build clean init tidy path
 
 fmt:
 	go fmt ./...
@@ -8,10 +8,18 @@ fmt:
 vet: fmt
 	go vet ./...
 
+init:
+	@if [ ! -f go.mod ]; then \
+		echo "Initializing go.mod..."; \
+		go mod init glimpse; \
+	else \
+		echo "go.mod already exists, skipping init."; \
+	fi
+
 tidy: 
 	go mod tidy
 
-build: tidy vet
+build: init tidy vet
 	go build .
 
 clean:
