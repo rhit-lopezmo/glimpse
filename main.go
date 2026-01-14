@@ -10,6 +10,7 @@ import (
 
 var screenWidth int32 = 1024
 var screenHeight int32 = 768
+var zoom float32 = 1
 
 var assets []rl.Texture2D
 var assetNames []string
@@ -77,6 +78,8 @@ func loadFileAsset(filePath string) {
 }
 
 func update() {
+	zoom += rl.GetMouseWheelMove() * 0.1
+
 	// change screen vars based on actual size of window
 	screenWidth = int32(rl.GetScreenWidth())
 	screenHeight = int32(rl.GetScreenHeight())
@@ -107,16 +110,19 @@ func render() {
 	if len(assets) > 0 {
 		currAsset := assets[currAssetIndex]
 
+		// assetPos := rl.Vector2{
+		// 	X: float32(screenWidth)/2 - float32(currAsset.Width)/2,
+		// 	Y: float32(screenHeight)/2 - float32(currAsset.Height)/2,
+		// }
+
+		scaledW := float32(currAsset.Width) * zoom
+		scaledH := float32(currAsset.Height) * zoom
 		assetPos := rl.Vector2{
-			X: float32(screenWidth)/2 - float32(currAsset.Width)/2,
-			Y: float32(screenHeight)/2 - float32(currAsset.Height)/2,
+			X: float32(screenWidth)/2 - scaledW/2,
+			Y: float32(screenHeight)/2 - scaledH/2,
 		}
 
-		rl.DrawTextureV(
-			currAsset,
-			assetPos,
-			rl.White,
-		)
+		rl.DrawTextureEx(currAsset, assetPos, 0, zoom, rl.White)
 
 		fontSize := int32(50)
 		assetText := assetNames[currAssetIndex]
